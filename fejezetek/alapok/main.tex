@@ -1,0 +1,44 @@
+\p[5]{
+\cimke{valami}{Ez itt az első fejezet, egy ilyenben lehet kifejteni egyes témaköröket részletesen.
+Minden ilyen számozott fejezet automatikusan bekerül a dokumentumba egyetlen paranccsal. A későbbiekben
+megmutatjuk hogyan lehet feltételekkel megszabni, milyen részletesen kerüljön be a végleges doksiba.}
+
+\cimke{masik}{Mindezt azért tesszük, hogy az átláthatóságot és a kezelhetőséget fenn tudjuk tartani.
+Ha elég jól el vannak különítve a fájlok, akkor könnyedén lehet párhuzamosan
+dolgozni többmindenen, ez a cél. Egy \KoTaF projekt mappa-elrendezését a következő módon követjük:}
+\begin{itemize}
+    \item main.tex - a fő fordítási egység forrása
+    \item packagek.tex - minden használt package-t itt definiálunk
+    \item parancsok.tex - minden saját \LaTeX\ parancsot itt definiálunk
+    \item fogalmak.tex - a dokumentumhoz tartozó fogalmak. A későbbiekben megmutatjuk, hogyan tudjuk importálni a szövegkörnyezetbe.
+    \item fejezetek
+        \begin{itemize}
+            \item fejezet\_azonosito - ez egy fejezet mappája, a mappa neve a fejezet rövid azonosítható nevevével ellátva. Ezzel az azonosítóval tudjuk importálni a dokumentumba
+                \begin{itemize}
+                    \item main.tex - a fejezet forrása, itt a szerkesztőre van bízva, hogy tovább bontsa több al-fájlra vagy akár mappára igény szerint. Érdemes úgy elképzelni, mint egy önálló projekt ezen belül.
+                    \item ...
+                \end{itemize}
+            \item ...
+        \end{itemize}
+\end{itemize}
+}
+\p[5]{
+Ide, a fejezet forrásába továbbá importálhatunk:
+\begin{itemize}
+    \item további al-fejezeteket
+    \item ábrákat
+    \item bármi mást, amit a téma igényel
+\end{itemize}
+
+Egy fejezetet a fő main.tex-be a következőképpen tudunk importálni.
+A preambulum részében van egy lista, oda tudunk felvenni újabb fejezeteket, mely
+elrendezése a következő:
+}
+\begin{verbatim}
+    \def\fejezetek{
+        fejezet_mappa_neve/Fejezet címe,
+        ...
+    }
+\end{verbatim}
+\p[5]{Először a fejezet azonosítóját adjuk meg, perjellel elválasztva pedig a fejezet formázott címét tudjuk megadni. Mivel vesszővel vannak az elemek elválasztva, és ha vesszőt akarunk a címbe tenni, a
+Ez azért szükséges, mert látni fogjuk, hogy dinamikusan lehet kiválasztani, hogy a forrás mely részei kerüljenek be a végleges dokumentumba.}

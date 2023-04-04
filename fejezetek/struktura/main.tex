@@ -1,0 +1,20 @@
+\p[5]{A jelenleginél valószínűleg bonyolultabb hierarchia fog keletkezni, ezért itt megmutatjuk mi a cél, ha több alfejezet lenne.
+
+Alfejezetet célszerű külön forrásba helyezni, majd importálni:}
+\begin{verbatim}
+    \subimport{.}{cucc}
+\end{verbatim}
+\p[5]{
+A pont a jelenlegi forrás mappáját jelöli, a második argumentum a forrás fálj nevét jelenti.
+Eredménye:}
+
+\subimport{.}{cucc}
+
+\subsection{Másik alfejezet}
+
+\p[5]{Nem muszáj külön fájlba tenni ezeket. A tartalomtól függ, hogy mennyire átlátható külön vagy egyben. Ha az ellenkező történne, itt nyugodtan lehet almappákat kialakítani szintúgy, mint az ábrákkal.}
+
+\p[5]{Egy fontos megemlítendő, hogy a fejezet szövegét mindig helyezzük egy} \verb-\p{...}-
+\p[5]{parancsba, ezzel szabályozzuk a láthatóságot a dokumentum generálásakor. Ha nem tennénk minden magyarázó szöveget egy ilyenbe, akkor minden esetben megjelenne, emiatt is kérjük a szerkesztők különös figyelmét erre.}
+
+\p[5]{Ezt úgy érdemes elképzelni, mint egy paragrafus (p). Ami nem oda tartozik (mint például a fogalmak, tételek) azt ne tegyük paragrafusba. Az ábrák a megértést segítik, ezért azok belerartoznak a paragrafusok közé.}

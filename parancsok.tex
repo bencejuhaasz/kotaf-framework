@@ -1,0 +1,234 @@
+% kisegítő parancsok
+\import{.}{csomagok}
+\import{.}{szuro}
+
+% amikor nincs semmilyen alap tag tag-elve, az azt jelenti, hogy mindent szeretnénk, hogy bekerüljön
+\untagged{tetelek,bizonyitasok,kovetkezmenyek,megjegyzesek,peldak,magyarazatok,algoritmusok,fogalomtar}{
+    \usetag{minden,tetelek,bizonyitasok,kovetkezmenyek,megjegyzesek,peldak,magyarazatok,algoritmusok,fogalomtar}
+}
+
+\tagged{1,2,3,4,5}{\usetag{filterelve}}
+
+\tagged{minden,tetelek,bizonyitasok,kovetkezmenyek}{
+    \usetag{tartalomjegyzek}
+}
+
+\newcommand{\KoTaF}{
+    K{\smaller[1]{ö}}T\textsubscript{a}F
+}
+
+\newcommand{\tfh}{tegyük fel, hogy}
+\newcommand{\Tfh}{Tegyük fel, hogy}
+\newcommand{\acsa}{akkor és csak akkor}
+\newcommand{\Acsa}{Akkor és csak akkor}
+
+\newcommand{\rang}{\mathrm{rang}}
+
+\newcommand{\cimHelper}[2]{
+    \tagged{#1}{\iftagged{minden}{}{
+        \begin{center}
+            {\large \bfseries #2}
+        \end{center}
+    }}
+}
+
+\newcommand{\cim}[2][]{
+    \begin{titlepage}
+    \begin{center}
+        {\huge \bfseries #2}
+    \end{center}
+
+    \cimHelper{tetelek}{tételek}
+    \cimHelper{bizonyitasok}{bizonyítások}
+    \cimHelper{kovetkezmenyek}{bizonyítások következményei}
+    \cimHelper{fogalomtar}{fogalomtár}
+
+    \begin{center}
+        \vspace{8\baselineskip}
+        {\larger #1}
+    \end{center}
+
+    \end{titlepage}
+}
+
+\newcommand{\abra}[3]{
+   % \tagged{minden,abrak}{
+    \begin{figure}[#3]
+        \centering
+        \subimport{.}{#1}
+        \caption{#2}
+        \label{abra:#1}
+    \end{figure}
+%    }
+}
+
+\newcommand{\fogalomimport}[1]{
+    \par
+    \noindent
+    \textbf{\Glstext{#1}:}
+    \glsdesc*{#1}
+}
+
+\newcommand{\fogalomprint}{
+  \printunsrtglossary*{
+    \renewcommand{\glossarysection}[2][]{}
+  }
+}
+
+\renewcommand{\glsnamefont}[1]{\makefirstuc{#1}}
+\newglossarystyle{mystyle}{%
+\setglossarystyle{list}% base this style on the list style
+\renewcommand*{\glossentry}[2]{%
+\item[\glsentryitem{##1}%
+  \glstarget{##1}{\glossentryname{##1}:}]%
+  \noindent
+  \glossentrydesc{##1}\glspostdescription\space ##2}
+}
+\setglossarystyle{mystyle}
+
+
+% \theoremstyle{definition}
+\newtheorem{tetelenv}{Tétel}[section]
+\newcounter{bizcount}
+\newtheorem*{bizenv}{Bizonyítás}
+\newtheorem{lemmaenv}[tetelenv]{Lemma}
+\newtheorem{kovenv}{Következmény}[tetelenv]
+\newtheorem{allenv}[tetelenv]{Állítás}
+\newtheorem{megjenv}{Megjegyzés}[tetelenv]
+\newtheorem{peldaenv}{Példa}[tetelenv]
+\newtheorem{magyarazatenv}{Magyarázat}[tetelenv]
+\newtheorem{algenv}{Algoritmus}[section]
+
+\newcommand{\tetel}[2][]{
+    \iftagged{tetelek}{
+        \begin{tetelenv}[#1]
+            #2
+        \end{tetelenv}
+    }{\stepcounter{tetelenv}}
+}
+
+\newcommand{\biz}[1]{
+    \tagged{bizonyitasok}{
+        \begin{bizenv}
+            #1
+        \end{bizenv}
+        \stepcounter{bizcount}
+    }
+}
+
+\newcommand{\lem}[1]{
+    \iftagged{tetelek}{
+        \begin{lemmaenv}
+            #1
+        \end{lemmaenv}
+    }{\stepcounter{tetelenv}}
+}
+
+\newcommand{\kov}[2][]{
+    \tagged{kovetkezmenyek}{
+        \begin{kovenv}[#1]
+            #2
+        \end{kovenv}
+    }
+}
+
+\newcommand{\all}[2][]{
+    \iftagged{tetelek}{
+        \begin{allenv}[#1]
+            #2
+        \end{allenv}
+    }{\stepcounter{tetelenv}}
+}
+
+\newcommand{\megj}[2][]{
+    \iftagged{megjegyzesek}{
+        \begin{megjenv}[#1]
+            #2
+        \end{megjenv}
+    }{\stepcounter{megjenv}}
+}
+
+\newcommand{\pelda}[2][]{
+    \iftagged{peldak}{
+        \begin{peldaenv}[#1]
+            #2
+        \end{peldaenv}
+    }{\stepcounter{peldaenv}}
+}
+
+\newcommand{\magyarazat}[2][]{
+    \iftagged{magyarazatok}{
+        \begin{magyarazatenv}[#1]
+            #2
+        \end{magyarazatenv}
+    }{\stepcounter{magyarazatenv}}
+}
+
+\newcommand{\algoritmus}[2][]{
+    \iftagged{algoritmusok}{
+        \begin{algenv}[#1]
+            #2
+        \end{algenv}
+    }{\stepcounter{algenv}}
+}
+
+\newcommand{\fejezetimport}{
+    \foreach \a/\b in \fejezetek {
+        \tagged{minden}{\untagged{filterelve}{\clearpage}}
+        \usetag{f_\a}
+        \import{.}{szuro}
+        \iftagged{f_\a}{
+            \tagged{minden,tetelek,bizonyitasok,kovetkezmenyek}{
+                \section{\b}
+                \import{fejezetek/\a}{main}
+            }
+        }{
+            \stepcounter{section}
+        }
+    }
+}
+
+\newcommand{\fogalom}[3]{
+    \longnewglossaryentry{#1}{name={#2}}{#3}
+}
+
+\foreach \a/\b in \fejezetek {
+    \IfFileExists{fejezetek/\a/fogalmak.tex}{\import{fejezetek/\a}{fogalmak}}{}
+}
+\IfFileExists{fogalmak}{\import{.}{fogalmak}}{}
+\tagged{minden,fogalmak,fogalomtar}{\makeglossaries}
+
+\newcommand{\tartalomjegyzek}{
+    \tagged{tartalomjegyzek}{
+    \tableofcontents
+    \clearpage
+    }
+}
+
+\newcommand{\p}[2][1]{
+    \iftagged{filterelve}{
+        \tagged{#1}{#2}
+    }{
+        \tagged{minden}{#2}
+    }
+}
+
+\newcommand{\cimke}[2]{
+    \usetag{#1}
+    \import{.}{szuro.tex}
+    \tagged{#1}{#2}
+}
+
+\newcommand{\fogalomtar}{
+    \tagged{fogalomtar}{
+        \clearpage
+        
+        \tagged{tartalomjegyzek}{
+        \section*{Fogalomtár}
+        \addcontentsline{toc}{section}{Fogalomtár}
+        }
+        
+        \fogalomprint
+    }
+}
+

@@ -1,0 +1,23 @@
+\documentclass{article}
+\usepackage{import}
+
+\newcommand{\fejezetek}{
+    alapok/Alapok,
+    abrak/Ábrák használata,
+    fogalmak/Fogalmak kezelése,
+    struktura/Fejezetek struktúrálása,
+    tetelek/Tételek és bizonyítások kezelése,
+    generalas/Dokumentumgenerálás és feltételes fordítás
+}
+
+\import{.}{parancsok}
+
+\begin{document}
+
+\cim[\KoTaF szerkesztők\\ Nádudvari Ákos]{\KoTaF szerkesztési útmutató}
+
+\tartalomjegyzek
+\fejezetimport
+\fogalomtar
+
+\end{document}

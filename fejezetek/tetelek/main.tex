@@ -1,0 +1,62 @@
+\p{Itt megmutatjuk, hogy a tételeket és azok bizonyításait hogyan struktúráljuk. Ezt az elrendezést Vágó Tanárnő Analízis jegyzetei ihlették, ennek tiszteletére választottuk, köszönjük. 
+Egy tételt így definiáluk:}
+\begin{verbatim}
+    \tetel[A tétel neve]{Ez a tétel leírása}
+\end{verbatim}
+\p[2]{
+A tételnek opcionálisan adhatunk nevet, de általában nem szokott lenni. A példa így néz ki:
+}
+
+\tetel[A tétel neve]{
+    Ez a tétel leírása
+}
+
+\p[3]{A tétel után definiálhatunk egy bizonyítást (akár többet is):}
+\begin{verbatim}
+    \biz{Ez a tétel bizonyítása}
+\end{verbatim}
+
+\biz{
+    Ez a tétel bizonyítása
+}
+
+\p[4]{A tétel előtt lehetnek lemmák is:}
+\begin{verbatim}
+    \lem{Ez egy lemma}
+\end{verbatim}
+
+\lem{Ez egy lemma}
+
+\p[5]{A tételnek lehet következménye (szintén lehet több is):}
+\begin{verbatim}
+    \kov{Ez egy következménye a tételnek}
+\end{verbatim}
+
+\kov{
+    Ez egy következménye a tételnek
+}
+
+\p[5]{Tételek mellett léteznek állítások is, amiknek ugyanúgy lehet bizonyítása, következménye:}
+\begin{verbatim}
+    \all{Ez egy állítás, ugyanúgy működik mint egy tétel}
+    \kov{Az állítás következménye, jól követi a számozást}
+\end{verbatim}
+
+\all{
+    Ez egy állítás, ugyanúgy működik mint egy tétel
+}
+\kov{
+    Az állítás következménye, jól követi a számozást
+}
+
+\p[5]{
+Ezeken kívül használhatóak még: (a tétel szintaktikájával megegyeznek)}
+\begin{itemize}
+    \item megjegyzések - \verb-\megj-
+    \item példák - \verb-\pelda-
+    \item magyarázatok - \verb-\magyarazat-
+    \item algoritmusok - \verb-\algoritmus-
+\end{itemize}
+\p[5]{
+A következő fejezetben látni fogjuk hogy igény szerint egy tételgyűjteményt is tudunk automatikusan generálni például a szigorlatra készülőknek.
+Ilyenkor a dokumentumban csak a tételek maradnak, minden más ami magyarázat, kimarad.}

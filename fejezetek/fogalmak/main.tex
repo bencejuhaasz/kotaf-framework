@@ -1,0 +1,26 @@
+\p[5]{Itt jön egy izgalmas dolog. Mint tudjuk, a matematikában vannak definíciók, tételek, lemmák, bizonyítások, stb... Ezek közül a definíciókat szeretnénk összegyűjteni egy fogalomtárba, de a dokumentum írása közben is szeretnénk elhelyezni rendre a hozzá tartozó fejezetbe is. 
+
+A fogalmak kezelésére a \textbf{glossary} package-t használjuk. Készítettünk segítő parancsokat az könnyű kezelés érdekében:}
+\begin{itemize}
+    \item fogalom: megadjuk a fogalom típusát, majd egy azonosítót, és a fogalom szövegét, pl:
+        \begin{verbatim}
+            \fogalom{azonosito}{fogalom neve}
+                {Ez a fogalom szövege}
+        \end{verbatim}
+    \item fogalomimport: ezzel lehet beszúrni egy adott fogalmat a szövegkörnyezetbe:
+        \begin{verbatim}
+            \fogalomimport{azonosito}
+        \end{verbatim}
+    \item fogalomprint: ez a parancs az összes fogalmat kilistázza, megjelenési sorrendben
+        \begin{verbatim}
+            \fogalomprint
+        \end{verbatim}
+        Ez a parancs annyira nem fontos, mivel általában csak a fogalomtárban lesz használva, de jó tudni róla.
+\end{itemize}
+
+\p[5]{
+A fogalom parancsokat kérjük hogy a fejezethez tartozó, elkülönített fogalmat.tex-be tegyük, mert így szebben rendszerezhető és egységes marad.
+
+Itt egy példa egy beszúrt fogalomra:
+\fogalomimport{valami}
+Ez a fogalom utáni szöveg. Ez itt egy hivatkozás a \gls{valami} fogalomra.}

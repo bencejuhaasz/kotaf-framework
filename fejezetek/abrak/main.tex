@@ -1,0 +1,20 @@
+\p[5]{Az ábrákat a \textbf{tikz} package-el rajzoljuk, gráfokat pedig \textbf{pgfplots}-al.
+Minden ábra kap egy saját fájlt lehetőleg az adott fejezet mappáján belül.
+Itt egy ábra, demonstráljuk hogy importáljuk könnyedén:
+
+}
+\begin{verbatim}
+    \abra{abra1}{Ez egy ábra}{h!}
+\end{verbatim}
+\p[5]{
+Az első argumentum az ábra azonosítója, amire \textit{abra:...}-al lehet hivatkozni.
+Az ábra forrásfájlja is ezt a nevet kell, hogy felvegye.
+A második az ábra alatti leíró szöveg, a harmadik az elhelyezést paraméterezi.
+Az eredmény:
+
+\abra{abra1}{Ez egy ábra}{h!}
+
+Minden ilyet, ami a fejezethez tartozik, a saját mappájába tegyük, értelemszerűen.
+Ha kell, kialakíthatunk almappákat. Ez pedig egy hivatkozás \aref{abra:abra1}. ábrára szokásos módon az}
+\verb-\aref{abra:abra1}-
+\p[5]{paranccsal.}

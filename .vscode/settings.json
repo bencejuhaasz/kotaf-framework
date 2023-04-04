@@ -1,0 +1,8 @@
+{
+    "latex-workshop.docker.enabled": false,
+    "latex-workshop.latex.outDir": "./out",
+    "latex-workshop.synctex.afterBuild.enabled": true,
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-utilities.message.update.show": false,
+    "ltex.ltex-ls.path": "/opt/ltex-ls"
+}

@@ -1,0 +1,26 @@
+\p[5]{Mostmár tudunk mindent ami a szerkesztéshez kell. Itt arról lesz szó, hogy mi lesz a végeredmény.
+
+Alapvetően a kész dokumentumba bekerül minden, amit a forrásban találunk. Ezt tudjuk finomhangolni. A szuro.tex-ben található pár sor komment, amikkel szabályozni tudjuk, hogy mi forduljon le a végleges dokumentumba. Ez a \textbf{tagging} package-t használja, ami definiálja a következő parancsot:}
+\begin{verbatim}
+    \usetag{...}
+\end{verbatim}
+\p[5]{
+Az egyetlen argumentum vár valamilyen \textit{tag} azonosítót, amiket mi már előre megadtunk. Ezek lehetnek:
+\begin{itemize}
+    \item tetelek
+    \item bizonyitasok
+    \item kovetkezmenyek
+    \item megjegyzesek
+    \item peldak
+    \item magyarazatok
+    \item algoritmusok
+    \item fogalomtar
+\end{itemize}
+Úgy gondoljuk, ezek magukért beszélnek. Ha egy ilyen \textit{tag}-et definiálunk a fenti paranccsal, akkor az érvénybe lépteti a \KoTaF által készített feltételes fordítást és a megfelelő részeket helyezi a dokumentumba. Ennek a célja, hogy a szerkesztők munkáját könnyítsük, átláthatóvá tegyük.
+
+Ha nem adunk meg egyetlen \textit{tag}-et sem, akkor az azt jelenti, hogy a teljes dokumentumot szeretnénk lefordítani. Ha meg van adva bármeny \textit{tag}, akkor azt a címlapon jelzi számunkra a fordító.
+
+Hasonló módon tudunk egyes fejezeteken belül címkézni bekezdéseket, ez több finomhangolást ad lehetővé.
+Ha a} \verb-\cimke{cimke_neve}{...}- \p{parancsba helyezzük a szöveget,
+azt a szuro.tex-en belüli} \verb-\droptag{...}- \p{paranccsal tudjuk kivenni a dokumentumból a későbbiekben. Itt, a címkézésnél technikai és kényelmi okokból fordítva működik a tag-elés, tehát a szűrő parancsban megadott címkék kikerülnek a dokumentumból, a többivel ellentétben.
+}
